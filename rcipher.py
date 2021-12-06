@@ -21,6 +21,8 @@ rotationFactor = 39
 output = nopqrstuvwxyzABCDEFGHIJKLM9012345678
 
 """
+
+
 def rotationalCipher(input, rotation_factor):
     # Write your code here
     out = ""
@@ -40,7 +42,7 @@ def rotationalCipher(input, rotation_factor):
             if c_order + rotation_factor < max_order:
                 new_order = c_order + rotation_factor
             else:
-                shift_ = (c_order + rotation_factor - max_order-1) % chr_diff
+                shift_ = (c_order + rotation_factor - max_order - 1) % chr_diff
                 new_order = start_order + shift_
             new_char = chr(new_order)
         elif c.isnumeric():
@@ -48,7 +50,7 @@ def rotationalCipher(input, rotation_factor):
             if c_order + rotation_factor < nine_code:
                 new_order = c_order + rotation_factor
             else:
-                shift_ = (c_order + rotation_factor - nine_code-1) % num_diff
+                shift_ = (c_order + rotation_factor - nine_code - 1) % num_diff
                 new_order = zero_code + shift_
             new_char = chr(new_order)
         else:
@@ -59,13 +61,21 @@ def rotationalCipher(input, rotation_factor):
 
 
 if __name__ == "__main__":
-    input_1 = "All-convoYs-9-be:Alert1."
-    rotation_factor_1 = 4
-    expected_1 = "Epp-gsrzsCw-3-fi:Epivx5."
-    output_1 = rotationalCipher(input_1, rotation_factor_1)
-    print(expected_1, output_1)
-    input_2 = "abcdZXYzxy-999.@"
-    rotation_factor_2 = 200
-    expected_2 = "stuvRPQrpq-999.@"
-    output_2 = rotationalCipher(input_2, rotation_factor_2)
-    print(expected_2, output_2)
+    # input_1 = "All-convoYs-9-be:Alert1."
+    # rotation_factor_1 = 4
+    # expected_1 = "Epp-gsrzsCw-3-fi:Epivx5."
+    # output_1 = rotationalCipher(input_1, rotation_factor_1)
+    # print(expected_1, output_1)
+    # input_2 = "abcdZXYzxy-999.@"
+    # rotation_factor_2 = 200
+    # expected_2 = "stuvRPQrpq-999.@"
+    # output_2 = rotationalCipher(input_2, rotation_factor_2)
+    # print(expected_2, output_2)
+    cases = [("All-convoYs-9-be:Alert1.", 4, "Epp-gsrzsCw-3-fi:Epivx5."),
+             ("abcdZXYzxy-999.@", 200, "stuvRPQrpq-999.@"),
+             ("Zebra-493?", 3, "Cheud-726?"),
+             ("abcdefghijklmNOPQRSTUVWXYZ0123456789", 39, "nopqrstuvwxyzABCDEFGHIJKLM9012345678")]
+    for c in cases:
+        out = rotationalCipher(c[0], c[1])
+        assert out == c[2]
+    print(f'Success! for {len(cases)} cases')

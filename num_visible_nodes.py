@@ -1,3 +1,4 @@
+# TODO add more test cases (edge and complex ones)
 """
 https://www.facebookrecruiting.com/portal/coding_practice_question/?problem_id=495004218121393&c=282010630480533&ppid=454615229006519&practice_plan=0
 Number of Visible Nodes
@@ -19,7 +20,6 @@ Example
          4   7  13
 output = 4
 """
-import math
 
 
 # Add any extra import statements you may need here
@@ -34,8 +34,29 @@ class TreeNode:
     # Add any helper functions you may need here
 
 
+def max_child_depth(root, curr_depth):
+    max_depth_left = curr_depth
+    max_depth_right = curr_depth
+    if root.left is not None:
+        max_depth_left = max_child_depth(root.left, curr_depth + 1)
+    if root.right is not None:
+        max_depth_right = max_child_depth(root.right, curr_depth + 1)
+    return max(max_depth_right, max_depth_left)
+
+
 def visible_nodes(root):
+    depth = 1
+    max_depth = depth
+    if root.left is not None:
+        max_left_depth = max_child_depth(root.left, depth+1)
+        max_depth = max(max_depth, max_left_depth)
+    if root.right is not None:
+        max_right_depth = max_child_depth(root.right, depth+1)
+        max_depth = max(max_depth, max_right_depth)
+    return max_depth
+
     pass
+
 
 # Write your code here
 

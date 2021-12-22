@@ -3,4 +3,4 @@ edge cases
 2- all array values are equal 11111111
 3- if else cases all to be covered
 4- dont forget to return something
-5-
+5- sort the array and use it! may be safer to sort in place arr = sorted(arr)

@@ -4,3 +4,14 @@ edge cases
 3- if else cases all to be covered
 4- dont forget to return something
 5- sort the array and use it! may be safer to sort in place arr = sorted(arr)
+6- review assumptions THOROUGHLY PLEASE !! for ex. are input arrays sorted
+7-do we need if or it is a repeated process, while with maybe a break ?
+8-with while , for i a) dont forget update value b) check boundaries with short circuit op, it's a free running index
+
+
+
+
+
+Good examples for quick review
+1- Revenue Milestones
+2-

@@ -30,25 +30,48 @@ s consists of English letters, digits, symbols and spaces.
 
 
 class Solution(object):
-    def lengthOfLongestSubstring(self, s):
+    def lengthOfLongestSubstring_attempt1_wrong(self, s):
         """
         :type s: str
         :rtype: int
         """
         n = len(s)
-        ch_set = set()
+        ch_dict = dict()
         counter = 0
         max_ = 0
         for i in range(n):
-            if s[i] in ch_set:
-                ch_set.clear()
+            if s[i] in ch_dict.keys():
                 max_ = max(max_, counter)
-                counter = 0
+                last_i = ch_dict[s[i]]
+                counter = i - last_i
+                ch_dict.clear()
+                ch_dict[s[i]] = i
             else:  # block (1)
-                ch_set.add(s[i])
+                ch_dict[s[i]] = i
                 counter = counter + 1
-        max_ = max(counter, max_)
+        max_ = max(max_, counter)
+        return max_
         # TODO focus in edge case, this line of the string stretched to end, esp for block(1)
+
+    def lengthOfLongestSubstring(self, s):
+        n = len(s)
+        if n <= 1:
+            return n
+
+        i = 0
+        j = 1
+        max_ = 0
+        chr_dict = {s[i]: i}
+        while j < n:
+            if s[j] in chr_dict.keys() and chr_dict[s[j]] >= i:
+                count_ = j - chr_dict[s[j]]
+                max_ = max(max_, count_)
+                i = chr_dict[s[j]] + 1
+            else:
+                count_ = j - i + 1
+                max_ = max(max_, count_)
+            chr_dict[s[j]] = j
+            j = j + 1
 
         return max_
 
@@ -73,3 +96,11 @@ if __name__ == '__main__':
     sol = Solution()
     l = sol.lengthOfLongestSubstring(s)
     assert l == 7
+
+    assert sol.lengthOfLongestSubstring("aab") == 2
+
+    assert sol.lengthOfLongestSubstring("dvdf") == 3
+
+    assert sol.lengthOfLongestSubstring("abba") == 2
+
+    assert sol.lengthOfLongestSubstring("bbabcddcea") == 4

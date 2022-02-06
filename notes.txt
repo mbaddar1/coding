@@ -14,4 +14,4 @@ edge cases
 
 Good examples for quick review
 1- Revenue Milestones
-2-
+2-pow(x,n) # deep recursive, see the first attempt WRONG solution

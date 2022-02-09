@@ -15,3 +15,5 @@ edge cases
 Good examples for quick review
 1- Revenue Milestones
 2-pow(x,n) # deep recursive, see the first attempt WRONG solution
+3- BinSearch - while i<=j not i<j, corner cases of sorted arrays
+4-

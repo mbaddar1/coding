@@ -8,7 +8,7 @@ import math
 import numpy as np
 from tqdm import tqdm
 
-from utils import myAssert
+from utils import MyAssert
 
 
 class Solution(object):
@@ -82,7 +82,7 @@ class Solution(object):
 
 if __name__ == '__main__':
     s = Solution()
-    assertInst = myAssert()
+    assertInst = MyAssert()
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger('Main')
     # x = 5

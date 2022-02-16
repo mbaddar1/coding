@@ -7,5 +7,8 @@ https://leetcode.com/discuss/interview-question/675445/facebook-interview-experi
 
 TODO later
 1) https://leetcode.com/explore/interview/card/facebook/52/trees-and-graphs/3025/
-2) 
+2) https://leetcode.com/problems/shortest-bridge/  (good hard problem - reported in FB interviews)
+
+
+
 

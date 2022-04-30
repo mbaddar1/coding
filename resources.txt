@@ -1,8 +1,6 @@
-fb
-https://leetcode.com/explore/interview/card/facebook/
-fb
+Meta
 https://leetcode.com/discuss/interview-question/675445/facebook-interview-experiences-all-combined-from-lc-till-date-07-jun-2020
-
+https://leetcode.com/explore/interview/card/facebook/
 
 
 TODO later
@@ -11,4 +9,9 @@ TODO later
 
 
 
+
+https://www.facebookrecruiting.com/portal/interview_prep_hub?c=282010630480533&scrollToSection=CODING_EXERCISES
+
+Guide
+https://www.metacareers.com/ML-prep-initial/
 

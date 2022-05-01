@@ -1,5 +1,9 @@
 Meta
+
+# In-progress : take them one by one
 https://leetcode.com/discuss/interview-question/675445/facebook-interview-experiences-all-combined-from-lc-till-date-07-jun-2020
+
+# rotate over topics / DataStruct
 https://leetcode.com/explore/interview/card/facebook/
 
 

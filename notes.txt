@@ -7,7 +7,7 @@ edge cases
 6- review assumptions THOROUGHLY PLEASE !! for ex. are input arrays sorted
 7-do we need if or it is a repeated process, while with maybe a break ?
 8-with while , for i a) dont forget update value b) check boundaries with short circuit op, it's a free running index
-
+9-Start with the minimal optimal and make sure the logic works (not the super squeezed optimal , example - Can parition equal)
 
 
 
@@ -16,4 +16,11 @@ Good examples for quick review
 1- Revenue Milestones
 2-pow(x,n) # deep recursive, see the first attempt WRONG solution
 3- BinSearch - while i<=j not i<j, corner cases of sorted arrays
-4-
+
+
+Revisit
+1- partial equal sum https://leetcode.com/problems/partition-equal-subset-sum/ (time limit exceeded
+for some big case even the soln in thoery is fine . TODO : optimize the loops , test , if not , see the existing
+solutions and compare
+
+2-

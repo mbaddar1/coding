@@ -1,4 +1,7 @@
 # https://leetcode.com/problems/valid-palindrome-ii/
+# success https://leetcode.com/problems/valid-palindrome-ii/submissions/
+import numpy as np
+
 
 class Solution:
     def validPalindromeHelper_attempt_1(self, s: str, i: int, j: int):
@@ -15,15 +18,20 @@ class Solution:
 
     def validPalindrome(self, s: str) -> bool:
         n = len(s)
-        tolerance = 1
+
         if n <= 1:
             return True
-        i = 0
-        j = n - 1
+
+        ret = np.zeros(shape=2, dtype=bool)
+        ret[0] = ret[1] = True
         for direction in range(2):  # 0 skip a , 1 skip j
+            tolerance = 1
+            i = 0
+            j = n - 1
             while j >= i:
                 if s[i] != s[j] and tolerance == 0:
-                    return False
+                    ret[direction] = False
+                    break
                 elif s[i] != s[j] and tolerance == 1:
                     tolerance = 0
                     if direction == 0:
@@ -33,19 +41,19 @@ class Solution:
                 else:
                     i = i + 1
                     j = j - 1
-        return True
+
+        return ret[0] or ret[1]
 
 
 if __name__ == '__main__':
     s = Solution()
+    assert s.validPalindrome("cbbcc") == True
     assert s.validPalindrome("abba") == True
-    cases = [("aba", True), ("abca", True), ("abc", False)]
-    for input, expected_output in cases:
-        assert s.validPalindrome(input) == expected_output
-    print(s.validPalindrome("aba"))
-    print(s.validPalindrome("abba"))
-    print(s.validPalindrome("a"))
-    print(s.validPalindrome(""))
-    print(s.validPalindrome("ab"))
-    print(s.validPalindrome("abc"))
-    print(s.validPalindrome("abca"))
+    assert s.validPalindrome("aba") == True
+    assert s.validPalindrome("abba") == True
+    assert s.validPalindrome("a") == True
+    assert s.validPalindrome("") == True
+    assert s.validPalindrome("ab") == True
+    assert s.validPalindrome("abc") == False
+    assert s.validPalindrome("abca") == True
+    assert s.validPalindrome("abdca") == False

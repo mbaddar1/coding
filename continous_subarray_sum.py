@@ -1,7 +1,19 @@
+# https://leetcode.com/problems/continuous-subarray-sum/
 from typing import List
 import numpy as np
 
-
+# TODO optimize memory usage
+"""
+Out of memory Error
+numpy.core._exceptions._ArrayMemoryError: Unable to allocate 24.5 GiB for an array with shape (57286, 57286) and data type float64
+    dp = np.zeros(shape=(n, n))
+Line 5 in checkSubarraySum (Solution.py)
+    ret = Solution().checkSubarraySum(param_1, param_2)
+Line 40 in _driver (Solution.py)
+    _driver()
+Line 51 in <module> (Solution.py)
+test case : https://leetcode.com/submissions/detail/701961972/testcase/ 
+"""
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
         n = len(nums)

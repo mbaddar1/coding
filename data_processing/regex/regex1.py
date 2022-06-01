@@ -10,6 +10,46 @@ https://www.geeksforgeeks.org/python-re-search-vs-re-match/
 
 
 """
+
+
+def is_strong_password(string_):
+    """
+
+    :param string_:
+    :return:
+    """
+    """
+    A strong password is defined as follows:
+
+        at least eight characters long
+        contains one uppercase character
+        contains one lowercase character
+        has at least one digit
+        has at least one special character
+    """
+    print('checking strong password')
+    len_pattern = r".{8,}"
+    if re.fullmatch(pattern=len_pattern, string=string_) is None:
+        return False
+    uppercase_pattern = r"[A-Z]"
+    if re.search(pattern=uppercase_pattern, string=string_) is None:
+        print('does not contain uppercase')
+        return False
+    uppercase_pattern = r"[a-z]"
+    if re.search(pattern=uppercase_pattern, string=string_) is None:
+        print('does not contain lowercase')
+        return False
+    digit_pattern = r"[0-9]"
+    if re.search(pattern=digit_pattern, string=string_) is None:
+        print('does not contain digit')
+        return False
+    special_pattern = r"[!@#$%^&*()_+\-=\[\]{};':\"\\|,.<>\/?]"
+    if re.search(pattern=special_pattern,string=string_) is None:
+        print('no special')
+        return False
+    return True
+
+
 import re
 
 if __name__ == '__main__':
@@ -46,3 +86,10 @@ if __name__ == '__main__':
     assert re.match(pattern=pattern, string=phone3) is None
     assert re.match(pattern=pattern, string=phone4) is None
     assert re.match(pattern=pattern, string=phone5) is None
+
+    # Q3
+    assert not is_strong_password("abcdefghiABC")
+    assert is_strong_password("123a4567@A")
+    assert not is_strong_password("1234567a")
+    assert is_strong_password("12c345@6A8")
+    assert not is_strong_password("123456a8")

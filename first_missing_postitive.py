@@ -16,13 +16,13 @@ class Solution:
                 one_exists = True
         if not one_exists:
             return 1
-        for i, num in enumerate(nums):
-            if num < 0 or num > N:
+        for i, num in enumerate(nums): # make range of nums[i] : 1<=nums[i]<=N
+            if num <= 0 or num > N:
                 nums[i] = 1
-        for i, num in enumerate(nums):
+        for i, num in enumerate(nums): # mark each nums[i]. When an integer is missing, it will miss the mark.
             idx = (nums[i] - 1) % N
             nums[idx] += N
-        for i, num in enumerate(nums):
+        for i, num in enumerate(nums): # find the needed number
             if num < N + 1:
                 return i + 1
         return N + 1

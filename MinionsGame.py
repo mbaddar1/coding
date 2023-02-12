@@ -14,48 +14,28 @@ def get_char_idx(s):
 
 
 # https://www.hackerrank.com/challenges/the-minion-game/problem?isFullScreen=true
-def fn(s):
-    n = len(s)
-    substr_dict = dict()
+def fn1(s):
     s = s.lower()
-    c_idx = get_char_idx(s)
-    vowel_count = 0
-    non_vowel_count = 0
-    for i, (k, v) in enumerate(c_idx.items()):
-        if len(v) == 1:
-            if is_vowel(k):
-                vowel_count += n - v[0]
-            else:
-                non_vowel_count += n - v[0]
+    vowel_counter = 0
+    non_vowel_counter = 0
+    n = len(s)
+    for i,c in enumerate(s):
+        if is_vowel(c):
+            vowel_counter+=n-i
         else:
-
-            for str_len in range(1,n-v[0]+1):
-                start_idx = v[0]
-                end_index = min(n,v[0]+str_len)
-                substr = s[start_idx:end_index]
-                if is_vowel(k):
-                    vowel_count+=1
-                else:
-                    non_vowel_count+=1
-                for start_idx2 in v[1:]:
-                    end_index2 = min(n,start_idx2+str_len)
-                    substr2 = s[start_idx2:end_index2]
-                    if substr==substr2:
-                        if is_vowel(k):
-                            vowel_count+=1
-                        else:
-                            non_vowel_count+=1
-
-    if non_vowel_count > vowel_count:
-        return_str = f"STUART {non_vowel_count}"
-    elif vowel_count > non_vowel_count:
-        return_str = f"KEVIN {vowel_count}"
+            non_vowel_counter+=n-i
+    if vowel_counter>non_vowel_counter:
+        r = f"KEVEN {vowel_counter}"
+    elif non_vowel_counter > vowel_counter:
+        r = f"STUART {non_vowel_counter}"
     else:
-        return_str = "Draw"
-    return return_str
+        r = "Draw"
+    return r
+
+
 
 
 if __name__ == '__main__':
-    s = "BANANA"
-    r = fn(s)
+    s = "BAANANAS"
+    r = fn1(s)
     print(r)

@@ -74,4 +74,11 @@ if __name__ == "__main__":
     grid = [[0, 0, 0], [1, 1, 0], [1, 1, 0]]
     s = Solution()
     r = s.shortestPathBinaryMatrix(grid)
-    pass
+    assert r == 4
+    ###
+    grid = [[0, 1], [1, 0]]
+    s = Solution()
+    r = s.shortestPathBinaryMatrix(grid)
+    assert r == 2
+    print("ok")
+

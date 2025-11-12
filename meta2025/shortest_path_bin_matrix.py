@@ -1,13 +1,18 @@
 # https://leetcode.com/problems/merge-intervals/description/?envType=company&envId=facebook&favoriteSlug=facebook-thirty-days
+# Wrong answer
+#   https://leetcode.com/problems/shortest-path-in-binary-matrix/submissions/1827798278
 from typing import List, Tuple, Dict, Set
 
 
 class Solution:
+    INVALID = -100
+
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
-        r = Solution.findPath(grid, (0, 0), set(), len(grid))
+        n = len(grid)
+        minPaths = [[Solution.INVALID] * n for _ in range(n)]
+        r = Solution.findPath(grid, (0, 0), set(), n, minPaths)
         return r
 
-    @staticmethod
     @staticmethod
     def get_adjacent(grid: List[List[int]], pos: (int, int), n: int) -> List[Tuple[int, int]]:
         adj_list = []
@@ -41,13 +46,20 @@ class Solution:
         return adj_list
 
     @staticmethod
-    def findPath(grid: List[List[int]], curr_pos: Tuple[int, int], visited: Set[Tuple[int, int]], n: int) -> int:
+    def findPath(grid: List[List[int]], curr_pos: Tuple[int, int], visited: Set[Tuple[int, int]], n: int,
+                 minPaths: List[List[int]]) -> int:
         i = curr_pos[0]
         j = curr_pos[1]
+        if minPaths[i][j] != Solution.INVALID:
+            return minPaths[i][j]
         if curr_pos == (n - 1, n - 1) and grid[n - 1][n - 1] == 0:
-            return 1
+            r = 1
+            minPaths[i][j] = r
+            return r
         if grid[i][j] == 1:
-            return -1
+            r = -1
+            minPaths[i][j] = r
+            return r
         visited.add(curr_pos)
         adj_list = Solution.get_adjacent(grid, curr_pos, n)
         all_visited = True
@@ -55,7 +67,7 @@ class Solution:
         for adj_pos in adj_list:
             if adj_pos not in visited:
                 all_visited = False
-                path_len = Solution.findPath(grid, adj_pos, visited, n)
+                path_len = Solution.findPath(grid, adj_pos, visited, n,minPaths)
                 if minPathLen == -1:
                     if path_len > 0:
                         minPathLen = path_len
@@ -64,10 +76,16 @@ class Solution:
                         minPathLen = min(minPathLen, path_len)
         visited.remove(curr_pos)
         if all_visited:
-            return -1
+            r = -1
+            minPaths[i][j] = r
+            return r
         if minPathLen == -1:
-            return -1
-        return 1 + minPathLen
+            r = -1
+            minPaths[i][j] = r
+            return r
+        r = 1 + minPathLen
+        minPaths[i][j] = r
+        return r
 
 
 if __name__ == "__main__":
@@ -80,5 +98,11 @@ if __name__ == "__main__":
     s = Solution()
     r = s.shortestPathBinaryMatrix(grid)
     assert r == 2
-    print("ok")
 
+    # from leetcode
+    grid = [[0, 0, 0, 1], [0, 0, 1, 0], [0, 1, 0, 0], [1, 0, 0, 0]]
+    s = Solution()
+    r = s.shortestPathBinaryMatrix(grid)
+    expected_val = 4
+    assert r == expected_val,f"{r}!={expected_val}"
+    print("ok")

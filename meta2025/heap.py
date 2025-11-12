@@ -1,9 +1,23 @@
+import numpy as np
+
 class MAX_HEAP:
     def __init__(self, size: int):
         self.arr = [None] * size
         self.size = size
         self.count = 0
+    @staticmethod
+    def my_nan_max(a):
+        i = 0
+        while i < len(a):
+            if a[i] is not None:
+                max_val = a[i]
+                break
+            i = i+1
 
+        for j in range(i,len(a)):
+            if a[i] is not None and a[i] > max_val:
+                max_val = a[i]
+        return max_val
     def insert(self, v: int):
         if self.count == self.size:
             raise ValueError("heap overflow")
@@ -50,6 +64,9 @@ class MAX_HEAP:
         self.heapify_down(bigger_child_idx)
     def check(self):
         self.check2(0)
+        assert self.arr[0] is not None
+        assert self.arr[0] == MAX_HEAP.my_nan_max(self.arr)
+
     def check2(self,i):
         if i > (self.count-1):
             return
@@ -67,7 +84,6 @@ class MAX_HEAP:
             self.check2(2*i+2)
         else:
             pass
-
 
 
 if __name__ == "__main__":

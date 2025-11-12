@@ -52,7 +52,6 @@ class LRUCache:
                     node.nextNode = None
 
     def __remove_lru(self):
-
         if self.usage_list_head is None and self.usage_list_tail is None:
             raise ValueError("Impossible case . Trying to remove lru key with no usage tracking")
         assert self.usage_list_head is not None and self.usage_list_tail is not None # at least one element in usage_list
@@ -66,7 +65,6 @@ class LRUCache:
             self.usage_list_head.prevNode = None
         # delete entry from dict
         del self.data[lru_k]
-
 
     def __init__(self, capacity: int):
         self.data = {}

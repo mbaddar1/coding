@@ -2,7 +2,7 @@ import heapq
 from typing import List, Tuple, Any
 
 
-def heapify_internal(arr: List[Tuple[float, Any]], i):
+def heapify2_index(arr: List[Tuple[float, Any]], i):
     n = len(arr)
     l = 2 * i + 1
     r = 2 * i + 2
@@ -17,14 +17,14 @@ def heapify_internal(arr: List[Tuple[float, Any]], i):
         tmp = arr[i]
         arr[i] = arr[lowest]
         arr[lowest] = tmp
-        heapify_internal(arr, lowest)
+        heapify2_index(arr, lowest)
 
 
-def heapify2(arr: List[Tuple[float, Any]]):
+def build_heap2(arr: List[Tuple[float, Any]]):
     n = len(arr)
     start_idx = n // 2 - 1
     for i in range(start_idx, -1, -1):
-        heapify_internal(arr, i)
+        heapify2_index(arr, i)
 
 
 def check_min_heap(a: List[Tuple[float, Any]]) -> bool:
@@ -51,10 +51,5 @@ def check_min_heap_aux(a: List[Tuple[float, Any]], i: int) -> bool:
 if __name__ == '__main__':
     a = [(4, None), (10, None), (3, None), (5, None), (1, None)]
     print(check_min_heap(a))
-    heapify2(a)
+    build_heap2(a)
     print(check_min_heap(a))
-    #
-    # for v in a:
-    #     print(v)
-    # chk_res = check_min_heap(a)
-    # print(chk_res)

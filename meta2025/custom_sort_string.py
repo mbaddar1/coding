@@ -48,7 +48,3 @@ if __name__ == "__main__":
     sol = Solution()
     r = sol.customSortString(order, s)
     assert r == "bcad"
-
-
-
-

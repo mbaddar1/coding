@@ -4,12 +4,10 @@ DONE
 https://leetcode.com/problems/combination-sum/submissions/1863442612/
 """
 from typing import List
-
-
 class Solution:
     def __init__(self):
         self.candidates_set = None
-        self.memoization = set() # TODO didnot work, to check later
+        self.memoization = set() # TODO did not work, to check later
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         self.candidates_set = set(candidates)
         r =  self.__comb_sum(candidates,target)
